@@ -121,7 +121,7 @@ public class ProcessJUnitTest {
   }
 
   @Test
-  public void testTweetMsgEvent() {
+  public void testTweetMsgSuperUser() {
 
     ProcessInstance processInstance = runtimeService()
             .createMessageCorrelation("superuserTweet")
