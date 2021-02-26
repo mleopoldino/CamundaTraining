@@ -11,12 +11,12 @@
   <description>Spring Boot Application using [Camunda](http://docs.camunda.org).</description>
 
   <properties>
-    <camunda.version>7.14.0</camunda.version>
+    <camunda.version>7.14.0-ee</camunda.version>
     <springBoot.version>2.3.4.RELEASE</springBoot.version>
 
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <version.java>1.8</version.java>
+    <version.java>11</version.java>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -56,7 +56,7 @@
 
     <dependency>
       <groupId>org.camunda.bpm.springboot</groupId>
-      <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
+      <artifactId>camunda-bpm-spring-boot-starter-webapp-ee</artifactId>
     </dependency>
 
     <dependency>
@@ -81,6 +81,31 @@
     </dependency>
 
     <!-- Add your own dependencies here, if in compile scope, they are added to the jar -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.camunda.bpm.assert</groupId>
+      <artifactId>camunda-bpm-assert</artifactId>
+      <version>8.0.0</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.twitter4j</groupId>
+      <artifactId>twitter4j-core</artifactId>
+      <version>3.0.5</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.camunda.bpm.extension</groupId>
+      <artifactId>camunda-bpm-process-test-coverage</artifactId>
+      <version>0.3.2</version>
+      <scope>test</scope>
+    </dependency>
 
   </dependencies>
 
@@ -90,13 +115,13 @@
       <name>Camunda Maven Repository</name>
       <url>https://app.camunda.com/nexus/content/groups/public</url>
     </repository>
-    <!-- enable this for EE dependencies (requires credentials in ~/.m2/settings.xml)
+
     <repository>
       <id>camunda-bpm-nexus-ee</id>
       <name>Camunda Enterprise Maven Repository</name>
       <url>https://app.camunda.com/nexus/content/repositories/camunda-bpm-ee</url>
     </repository>
-    -->
+
   </repositories>
 
   <build>
@@ -117,6 +142,8 @@
           </execution>
         </executions>
       </plugin>
+
+
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
